@@ -1,4 +1,4 @@
-version: '3'
+version: "3.8"
 
 volumes:
   opt-splunk-etc:
@@ -8,17 +8,15 @@ services:
   splunkenterprise:
     hostname: splunkenterprise
     image: splunk/splunk:latest
-
     environment:
       SPLUNK_START_ARGS: --accept-license --answer-yes
-      SPLUNK_PASSWORD: "StrongPassword123!"
-      SPLUNK_ENABLE_LISTEN: 9997
-      SPLUNK_ADD: tcp 1514
-
+      SPLUNK_GENERAL_TERMS: --accept-sgt-current-at-splunk-com
+      SPLUNK_PASSWORD: "ChangeThisToAStrongPassword123!"
+      SPLUNK_ENABLE_LISTEN: "9997"
+      SPLUNK_ADD: "tcp 1514"
     volumes:
       - opt-splunk-etc:/opt/splunk/etc
       - opt-splunk-var:/opt/splunk/var
-
     ports:
       - "8000:8000"
       - "9997:9997"
